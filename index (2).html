@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KALKULUS 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+  <body>
+    <nav>
+        <div class="wrapper">
+            <img src="C:\Users\ASUS Vivobook\Downloads\1-removebg-preview.png" alt="Kalkulus"/> 
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tutorials">Tutorials</a></li>
+                <li><a href="#math">Math</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script src="script.js"></script>
+<div class="wrapper">
+        <!-- untuk home -->
+        <section id="home">
+          <div class="homeimg"> 
+          <img src="C:\Users\ASUS Vivobook\Downloads\home1.png" /> <div class="lower-button">
+            <a href="#tutorials" class="tbl-tutor">TUTORS</a>
+        </div></div>
+      <div class="kolom">
+          <p class="deskripsi">Apa itu Fungsi Linear ?</p>
+          <h2>Fungsi Linear</h2>
+          <p>Fungsi linear adalah fungsi yang memiliki bentuk umum y = mx + b, dimana m adalah gradien dan b adalah perpotongan dengan sumbu y.</p>
+          <h3>Gradien</h3>
+          <p>Gradien adalah kemiringan garis. Nilai gradien dapat positif, negatif, atau nol.</p>
+          <p>1. Gradien positif menunjukkan bahwa garis miring ke atas dari kiri ke kanan.</p>
+              <p>2. Gradien negatif menunjukkan bahwa garis miring ke bawah dari kiri ke kanan.</p>
+          <p>3. Gradien nol menunjukkan bahwa garis horizontal.</p>
+         
+          <h3>Perpotongan dengan Sumbu Y</h3>
+          
+          <p>Perpotongan dengan sumbu y adalah titik di mana garis memotong sumbu y. Nilai perpotongan dengan sumbu y dapat positif, negatif, atau nol.</p>
+          
+          <h3>Grafik Fungsi Linier</h3>
+          
+          <p>Grafik fungsi linier adalah garis lurus. Perpotongan dengan sumbu y adalah titik awal garis, dan gradien menentukan arah dan kemiringan garis.</p>
+          
+          Contoh Fungsi Linier
+          
+         <p>Berikut adalah beberapa contoh fungsi linier:</p> 
+          
+         <p>1. y = 2x + 1</p> 
+          <p>2. y = -3x - 5</p>
+         <p>3. y = 0</p> 
+          </p>
+      </div>
+      </section>
+
+     <!-- untuk tutorials -->
+    <section id="tutorials">
+      <div class="tengah">
+          <div class="kolom">
+              <p class="deskripsi">LINEAR</p>
+              <h2>Tutors</h2>
+              <h3>1. Input nilai koefisien a atau gradien(m) dalam bentuk angka bilangan bulat positif maupun bilangan bulat negatif. Namun, perlu diperhatikan bahwa nilai a=/0</h3>
+              <h3>2. Input nilai konstanta b dalam bentuk bilangan bulat positif maupun bilangan bulat negatif
+              </h3>
+              <h3>3. Input daerah domain fungsi atau nilai untuk disubtitusikan kedalam variabel x dalam bentuk bilangan bulat positif. Jika himpunan daerah domain fungsi yang diinginkan {-2, -1, 0, 1, 2} maka inputkan angka 2</h3>
+            </div>
+      </div>   
+      <div class="tutorimg">
+      <img src="C:\Users\ASUS Vivobook\Downloads\Rumus-Fungsi-Linear-removebg-preview.png"/> <a href="#math" class="tbl-hitung">HITUNG</a> </div>
+      
+    </section>
+  
+    <!-- untuk math -->
+    <section id="math">
+        <div class="akhir">
+            <p class="deskripsi">MATH</p>
+            <h2>Penyelesaian Persamaan Linear</h2>
+    <br />
+    <p>
+      Silahkan inputkan nilai koefisien (a) atau nilai gradien (m) dalam bentuk
+      bilangan bulat positif atau bilangan bulat negatif.
+    </p>
+    <p>Namun, perlu diperhatikan bahwa nilai a≠0</p>
+    <label for="inputA">Masukkan nilai koefisien a:</label>
+    <input type="number" id="inputA" placeholder="Enter a" required />
+
+    <p>
+      Silahkan inputkan nilai konstanta (b) dalam bentuk bilangan bulat positif
+      atau bilangan bulat negatif.
+    </p>
+    <label for="inputB">Masukkan nilai konstanta b:</label>
+    <input type="number" id="inputB" placeholder="Enter b" required />
+
+    <p>
+      Silahkan inputkan nilai untuk daerah domain fungsi yang nilainya akan
+      disubtitusikan ke dalam variabel x dalam bentuk bilangan bulat positif.
+    </p>
+    <p>
+      Jika himpunan daerah domain fungsi yang diinginkan
+      <b> {-2, -1, 0, 1, 2} </b>maka inputkan angka <b>2</b>.
+    </p>
+    <label for="inputX">Masukkan daerah fungsi domain (x):</label>
+    <input type="number" id="inputX" placeholder="Enter x" required />
+    <br />
+    <button id="klik" onclick="menyelesaikanPersamaan()">Submit</button>
+    <button onclick="menghapusInputan()">Reset</button>
+    <!--input persamaan linear!-->
+
+    <div id="grafik-container"></div>
+    <div id="grafik"></div>
+    <div id="penyelesaian-persamaan"></div>
+    <div id="nilai-gradien"></div>
+    <div id="nilai-domain"></div>
+    <div id="nilai-hasil"></div>
+
+    <script>
+      //menghapus semua input dan grafik
+      function menghapusInputan() {
+        location.reload();
+      }
+
+      function menyelesaikanPersamaan() {
+        // mendapat nilai a, b, x dari input user
+        var koefisienA = parseFloat(document.getElementById("inputA").value);
+        var konstantaB = parseFloat(document.getElementById("inputB").value);
+        var nilaiSumbuX = parseFloat(document.getElementById("inputX").value);
+
+        // mengecek nilai a dan b
+        if (isNaN(koefisienA) || isNaN(konstantaB)) {
+          alert(
+            "Tolong input nilai koefisien a dan konstanta b dengan valid."
+          );
+          return;
+        }
+
+        // mengecek input nilai a tidak boleh sama dengan nol
+        if (koefisienA === 0) {
+          alert("Nilai koefisien a tidak boleh sama dengan nol.");
+          return;
+        }
+
+        // mengecek input nilai x
+        if (isNaN(nilaiSumbuX) || nilaiSumbuX <= 0) {
+          alert(
+            "Tolong input daerah fungsi domain dengan valid."
+          );
+          return;
+        }
+
+        // mendapatkan nilai domain fungsi x
+        var xData = [];
+        for (
+          var i = -Math.abs(nilaiSumbuX);
+          i <= Math.abs(nilaiSumbuX);
+          i += 1
+        ) {
+          xData.push(i);
+        }
+
+        // menghitung nilai y dari persamaan linear
+        var yData = xData.map(function (x) {
+          return koefisienA * x + konstantaB;
+        });
+
+        // membuat plotly untuk garis
+        var jejakGaris = {
+          x: xData,
+          y: yData,
+          type: "scatter",
+          mode: "lines",
+          name: "Persamaan Linear",
+          hoverinfo: "none",
+        };
+
+        // membuat plotly untuk titik - titik koordinat
+        var jejakTitik = {
+          x: xData,
+          y: yData,
+          mode: "markers",
+          marker: {
+            color: "red",
+            size: 8,
+          },
+
+          // menampilkan koordinat dengan 2 desimal saat mengarahkan kursor
+          hoverinfo: "text",
+          text: xData.map(
+            (x, i) => `(${x.toFixed(2)}, ${yData[i].toFixed(2)})`
+          ),
+          name: "Poin",
+        };
+
+        // mendefinisikan tampilan
+        var tampilan = {
+          title: "Grafik Persamaan Linear",
+          xaxis: {
+            title: "x",
+          },
+          yaxis: {
+            title: "y",
+          },
+        };
+
+        // menggambarkan grafik
+        Plotly.newPlot("grafik", [jejakGaris, jejakTitik], tampilan);
+
+       // proses menampilkan penyelesaian untuk setiap titik
+       displayprosesPenyelesaian(xData, yData, koefisienA, konstantaB);
+        function displayprosesPenyelesaian(xData, yData,koefisienA, konstantaB) {
+          var prosesPenyelesaianDiv = document.getElementById(
+            "penyelesaian-persamaan"
+          );
+          prosesPenyelesaianDiv.innerHTML = `
+          <h3>Persamaan Linear:</h3>
+          <p>y = ${koefisienA}x + ${konstantaB}</p>
+          <br>
+          <h3>Poin dan Proses Persamaan Linear:</h3>
+        `;
+          for (var i = 0; i < xData.length; i++) {
+            var penyelesaian = `y = ${koefisienA} * (${xData[i]}) + ${konstantaB} = ${yData[i]}`;
+            prosesPenyelesaianDiv.innerHTML += `
+            <p>Poin= (${xData[i]}, ${yData[i]})</p>
+            <p>y = ${koefisienA}x + ${konstantaB}</p>
+            <p>${penyelesaian}</p>
+            <br>`;
+          }
+        }
+
+        // proses menampilkan gradien persamaan linear
+        displaynilaiGradien(koefisienA, konstantaB);
+        function displaynilaiGradien(koefisienA, konstantaB) {
+          var nilaiGradienDiv = document.getElementById("nilai-gradien");
+          nilaiGradienDiv.innerHTML = `
+        <h3>Nilai Gradien:</h3>
+        <p>Nilai gradien dari persamaan linear y = ${koefisienA}x + ${konstantaB} adalah ${koefisienA}.</p>`;
+        }
+
+         // proses menampilkan nilai domain persamaan linear
+         displaynilaiDomain(xData, koefisienA, konstantaB);
+        function displaynilaiDomain(xData, koefisienA, konstantaB) {
+          var nilaiDomainDiv = document.getElementById("nilai-domain");
+          nilaiDomainDiv.innerHTML = `
+          <h3>Nilai Domain Fungsi:</h3>
+          <p>Nilai domain fungsi dari persamaan linear y = ${koefisienA}x + ${konstantaB} adalah {${xData}}`;
+        }
+
+        // proses menampilkan nilai range
+        displaynilaihasil(xData, yData, koefisienA, konstantaB);
+        function displaynilaihasil(xData, yData, koefisienA, konstantaB) {
+          var nilaihasilDiv = document.getElementById("nilai-hasil");
+          nilaihasilDiv.innerHTML = `
+          <h3>Nilai Range Fungsi:</h3>
+          <p>Nilai range fungsi dari persamaan linear y = ${koefisienA}x + ${konstantaB} adalah {${yData}}`;
+        }
+      }  
+    </script>
+    <p><a href="" class="tbl-home">Back Home</a></p>
+        </div>
+    </section>
+
+<!-- untuk contact -->
+<div id="contact">
+    <div class="wrapper">
+        <div class="footer">
+            <div class="footer-section">
+                <h3>Create by</h3>
+                <p>Salma Khairunnisa A - 237006097</p>
+                <p>Yasfi Nur Pangestu - 237006098</p>
+                <p>Rafli Haikal - 23700699</p>
+            </div>
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Website ini dibuat untuk memenuhi tugas matakuliah Kalkulus 1</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Jl. Mugarsari, Kec.Tamansari, Tasikmalaya</p>
+                <p>Kode Pos: 46196</p>
+            </div>
+            <div class="footer-section">
+                <h3>University</h3>
+                <p>UNIVERSITAS SILIWANGI</p>
+                <p><b>Major: </b>Informatika</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+  </body>
+</html>
